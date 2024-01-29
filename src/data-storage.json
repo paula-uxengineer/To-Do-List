@@ -1,0 +1,7 @@
+[
+    {"id": 1, "text": "study TypeScript", "completed": true },
+    {"id": 2, "text": "Adopt a dog", "completed": true },
+    {"id": 3, "text": "Meet Anders Hejlsberg", "completed": false },
+    {"id": 4, "text": "ask him about the use of any", "completed": false },
+    {"id": 5, "text": "adopt more dogs", "completed": false }
+]

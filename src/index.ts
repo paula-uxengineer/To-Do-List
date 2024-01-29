@@ -1,10 +1,7 @@
-interface Task {
-    id: number;
-    text: string;
-    completed: boolean;
-}
+import Task from "./template";
+import  "./data-storage.json";
 
-class Todolist{
+export class Todolist{
 
     listTask: Task[]
 
@@ -14,7 +11,7 @@ class Todolist{
 
     addTask(taska: string) {
         const newTask: Task = {
-            id: 1,
+            id: this.listTask.length +1,
             text: taska,
             completed: false,
         }
@@ -56,13 +53,24 @@ class Todolist{
         return task;
     }
 
-    showTasks(id:number){
-        
+    showAllTasks(id:number) {
+        return this.listTask;
+    }
+
+    deleteAllTask(id:number){
+        this.listTask = [];
+        return this.listTask;
     }
 }
 
+
 const app = new Todolist(); 
 
-console.log("Add: ", app.addTask("tengo que ir a dormir"));
+console.log(app.addTask(`Adopt a dog`));
 
-console.log("Show: ", app.showTask(1));
+console.log(app.addTask(`adopt more dogs`));
+
+console.log("Current Task:", app.showTask(1));
+
+console.log("Show all current tasks:", app.showAllTasks(1));
+
