@@ -53,11 +53,11 @@ export class Todolist{
         return task;
     }
 
-    showAllTasks(id:number) {
+    showAllTasks() {
         return this.listTask;
     }
 
-    deleteAllTask(id:number){
+    deleteAllTasks(){
         this.listTask = [];
         return this.listTask;
     }
@@ -72,5 +72,5 @@ console.log(app.addTask(`adopt more dogs`));
 
 console.log("Current Task:", app.showTask(1));
 
-console.log("Show all current tasks:", app.showAllTasks(1));
+console.log("Show all current tasks:", app.showAllTasks());
 
