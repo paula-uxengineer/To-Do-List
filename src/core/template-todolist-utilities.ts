@@ -5,7 +5,7 @@ export class TodolistDataStorage {
   saveTasksToFile(tasks: Task[]) {
     const tasksData: string = JSON.stringify(tasks, null, 2);
     
-    fs.writeFileSync('tasks.json', tasksData, 'utf-8');
+    fs.writeFileSync('./tasks.json', tasksData, 'utf-8');
 
     console.log('Tasks saved in the tasks.json file.');
   }

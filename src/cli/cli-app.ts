@@ -1,13 +1,14 @@
+import * as readline from 'readline'
+
 import Task from "../core/template-task";
 import { Todolist } from "../core/template-todolist";
 
 //////*** INIZIALICE CLI ***///////
-const fs = require("fs");
-const figlet = require("figlet"); //import figlet
-const readline = require('readline'); //import readline
 
-const filename = 'tasks.json';
+const figlet = require("figlet"); //import figlet
 const todoListInstance = new Todolist();
+
+// const filename = 'tasks.json';
 
 //////*** TITLE ***///////
 function displayTitle(){ 
@@ -66,7 +67,6 @@ function handleMenuChoice(choice: string) {
 
 //////*** ADD TASK ***///////
 function promptAndAddTask() {
-  const readline = require('readline');
   const readLine = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -77,7 +77,8 @@ function promptAndAddTask() {
 
     const newTask: Task = todoListInstance.addTask(task); //extracting method .addTask from the Todolist
 
-    saveTasksToFile(todoListInstance.showAllTasks());
+    todoListInstance.saveTasksToFile(newTask);
+    todoListInstance.showAllTasks();
 
     console.log(`New task added: ${newTask.text}`);
 
@@ -88,18 +89,18 @@ function promptAndAddTask() {
 
 //////*** COMPLETED TASK ***///////
 function promptAndCompleteTask() {
-  const readline = require('readline');
   const readLine = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  readLine.question('Enter the ID of the task to complete', (id: string) => {
-    readLine.close();
+    readLine.question('Enter the ID of the task to complete', (id: string) => {
+      readLine.close();
 
     todoListInstance.completedTask(Number(id));
 
-    saveTasksToFile(todoListInstance.showAllTasks());
+    todoListInstance.saveTasksToFile;
+
     console.log('Task completed');
 
     displayMainMenu();
@@ -109,7 +110,6 @@ function promptAndCompleteTask() {
 
 //////*** DELETE TASK ***///////
 function promptAndDeleteTask() {
-  const readline = require('readline');
   const readLine = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -120,7 +120,8 @@ function promptAndDeleteTask() {
 
     todoListInstance.deleteTask(Number(id));
 
-    saveTasksToFile(todoListInstance.showAllTasks());
+    todoListInstance.loadTasksFromFile();
+    todoListInstance.showAllTasks();
     console.log('Task deleted.');
 
     displayMainMenu();
@@ -130,7 +131,6 @@ function promptAndDeleteTask() {
 
 //////*** DISPLAY A TASK ***///////
 function promptAndShowTask() {
-  const readline = require('readline');
   const readLine = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -155,26 +155,4 @@ function displayAllTasks() {
   displayMainMenu();
 }
 
-
-//////*** SAVE DATA FUNCTION ***///////
-
-function saveTasksToFile(tasks: Task[]) {
-  const tasksData: string = JSON.stringify(tasks, null, 2);
-  
-  fs.writeFileSync('tasks.json', tasksData, 'utf-8');
-  
-  console.log('Tasks saved in the tasks.json file.');
-}
-
-
-//////*** LOAD DATA ***///////
-
-function loadTasksFromFile() {
-  const data = fs.readFileSync(filename, 'utf-8');
-  const tasks = JSON.parse(data);
-
-  todoListInstance.listTask = tasks;
-  console.log('Tareas cargadas desde el archivo tasks.json.');
-
-  displayMainMenu();
-}
+displayMainMenu();

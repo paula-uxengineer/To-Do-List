@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "text": "Adopt a dog",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "text": "Adopt more dogs",
+    "completed": false
+  }
+]
