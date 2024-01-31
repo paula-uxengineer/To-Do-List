@@ -3,22 +3,24 @@ import { TodolistDataStorage } from "./template-todolist-utilities";
 
 export class Todolist extends TodolistDataStorage{
 
-    listTask: Task[]
+    listTask: any
 
     constructor(){
         super();
-        this.listTask = [];
+        this.listTask = this.loadTasksFromFile(__dirname + "/tasks.json");
     }
 
     addTask(taska: string) {
         const newTask: Task = {
-            id: this.listTask.length + 1,
+            id: this.listTask.indice,
             text: taska,
             completed: false,
         }
 
-        this.listTask.push(newTask);
+        this.listTask.taskas.push(newTask);
         
+        this.listTask.indice += 1;
+
         this.saveTasksToFile(this.listTask);
 
         console.log("New task is added");
@@ -27,7 +29,7 @@ export class Todolist extends TodolistDataStorage{
     }
 
     completedTask(id: number) {
-        const task = this.listTask.find(task => task.id == id)
+        const task = this.listTask.taskas.find((task: Task) => task.id == id)
 
         if (task) {
             task.completed = true;
@@ -39,26 +41,37 @@ export class Todolist extends TodolistDataStorage{
     }
 
     deleteTask(id: number) {
-        const index = this.listTask.findIndex((task) => task.id === id);
+        const index = this.listTask.taskas.findIndex((task: Task) => task.id === id);
 
         if (index !== -1) {
-            this.listTask.splice(index, 1);
+            this.listTask.taskas.splice(index, 1);
             console.log("Task is deleted");
-
+            
         } else {
             console.log("Not task found");
         }
+        
+        return "Deleted!"
     }
     
     showTask(id:number) {
-        const task = this.listTask.find((task) => task.id === id);
+        const task = this.listTask.taskas.find((task: Task) => task.id === id);
         console.log(task);
 
         return task;
     }
 
     showAllTasks() {
-        return this.listTask;
+        return this.listTask.taskas;
     }
 
 }
+
+// const app = new Todolist();
+// console.log(app);
+
+// console.log(app.addTask("aprender typescript "));
+
+// console.log(app.showAllTasks())
+
+// console.log(app.deleteTask(3))

@@ -3,7 +3,7 @@ import * as readline from 'readline'
 import Task from "../core/template-task";
 import { Todolist } from "../core/template-todolist";
 
-//////*** INIZIALICE CLI ***///////
+////////////*** INIZIALICE CLI ***///////////
 
 const figlet = require("figlet"); //import figlet
 const todoListInstance = new Todolist();
@@ -155,4 +155,3 @@ function displayAllTasks() {
   displayMainMenu();
 }
 
-displayMainMenu();

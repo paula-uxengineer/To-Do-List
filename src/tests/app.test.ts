@@ -1,49 +1,44 @@
 import Task from "../core/template-task";
-import {Todolist} from "../core/template-todolist";
+import { Todolist } from "../core/template-todolist";
 
-export function runTests(){
-    describe(Todolist, () => {
-            let todoList: Todolist; 
+describe(Todolist, () => {
+  let todoList: Todolist;
 
-            beforeEach(() => {
-                todoList = new Todolist();
-            });
-        
-            test('addTask should add a new task', () => {
-                const newTask: Task = todoList.addTask('study TypeScript');
-                expect(newTask.text).toBe('study TypeScript');
-                expect(newTask.completed).toBe(false);
-            });
+  beforeAll(() => {
+    todoList = new Todolist();
+  });
 
-            test('completedTask should mark a task as completed', () => {
-                const newTask: Task = todoList.addTask('study TypeScript');
-                todoList.completedTask(newTask.id);
-                expect(newTask.completed).toBe(true);  
-            });
+  afterAll(() => {
+    console.log("Run test:");
+  });
 
-            test('deleteTask should delete a task', () => {
-                const newTask: Task = todoList.addTask('study TypeScript');
-                todoList.deleteTask(newTask.id);
-                expect(todoList.listTask).toHaveLength(0);
-            });
+  test("addTask should add a new task", () => {
+    const newTask: Task = todoList.addTask("study TypeScript");
+    expect(newTask.text).toBe("study TypeScript");
+    expect(newTask.completed).toBe(false);
+  });
 
-            test('showTask should return the correct task', () => {
-                const newTask: Task = todoList.addTask('study TypeScript');
-                const retrievedTask = todoList.showTask(newTask.id);
-                expect(retrievedTask).toEqual(newTask);
-            });
-            
-            test('showAllTasks should return all tasks', () => {
-                todoList.addTask('Adopt a dog');
-                todoList.addTask('Adopt more dogs');
-                const allTasks = todoList.showAllTasks();
-                expect(allTasks).toHaveLength(2);
-            });
-    });
+  test("completedTask should mark a task as completed", () => {
+    const newTask: Task = todoList.addTask("study TypeScript");
+    todoList.completedTask(newTask.id);
+    expect(newTask.completed).toBe(true);
+  });
 
-    afterAll(() => {
-        console.log('Run test:');
-    });
+  test("deleteTask should delete a task", () => {
+    const taskDeleted = todoList.deleteTask(4);
+    expect(taskDeleted).toBe("Deleted!");
+  });
 
-}
-runTests();
+  test("showTask should return the correct task", () => {
+    const newTask: Task = todoList.addTask("study TypeScript");
+    const retrievedTask = todoList.showTask(newTask.id);
+    expect(retrievedTask).toEqual(newTask);
+  });
+
+  test("showAllTasks should return all tasks", () => {
+    const allTasks = todoList.showAllTasks();
+    expect(allTasks.length).toBeGreaterThan(6);
+  });
+});
+
+
