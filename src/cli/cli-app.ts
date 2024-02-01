@@ -1,14 +1,12 @@
-import * as readline from 'readline'
-
-import Task from "../core/template-task";
-import { Todolist } from "../core/template-todolist";
-
-////////////*** INIZIALICE CLI ***///////////
+import readline from 'readline'
+// import figlet from 'figlet'
+import { Todolist } from "../core/class-todolist";
 
 const figlet = require("figlet"); //import figlet
+
+////////////*** INIZIALICE CLI ***///////////
 const todoListInstance = new Todolist();
 
-// const filename = 'tasks.json';
 
 //////*** TITLE ***///////
 function displayTitle(){ 
@@ -31,7 +29,7 @@ function displayMainMenu() {
     output: process.stdout,
   });
 
-  readLine.question('Select an option (1-9): ', (choice: string) => {
+  readLine.question('Select an option (1-6): ', (choice: string) => {
     readLine.close();
     handleMenuChoice(choice);
   });
@@ -59,31 +57,30 @@ function handleMenuChoice(choice: string) {
       process.exit();
       break;
     default:
-      console.log('Invalid option. Please select an option from 1 to 9.');
+      console.log('Invalid option. Please select an option from 1 to 6.');
       displayMainMenu();
       break;
   }
 }
 
-//////*** ADD TASK ***///////
+// //////*** ADD TASK ***///////
 function promptAndAddTask() {
   const readLine = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+  input: process.stdin,
+     output: process.stdout,
+   });
 
-  readLine.question('Add new task: ', (task: string) => {
-    readLine.close();
+   readLine.question('Add new task: ', (task: string) => {
+     readLine.close();
 
-    const newTask: Task = todoListInstance.addTask(task); //extracting method .addTask from the Todolist
+     const newTask = todoListInstance.addTask(task);
 
-    todoListInstance.saveTasksToFile(newTask);
-    todoListInstance.showAllTasks();
+    //  todoListInstance.showAllTasks();
 
-    console.log(`New task added: ${newTask.text}`);
+     console.log(`Task: ${newTask.text}`);
 
-    displayMainMenu();
-  });
+     displayMainMenu();
+   });
 }
 
 
@@ -94,7 +91,7 @@ function promptAndCompleteTask() {
     output: process.stdout,
   });
 
-    readLine.question('Enter the ID of the task to complete', (id: string) => {
+    readLine.question('Enter the ID of the task to complete ', (id: string) => {
       readLine.close();
 
     todoListInstance.completedTask(Number(id));
@@ -115,16 +112,22 @@ function promptAndDeleteTask() {
     output: process.stdout,
   });
 
-  readLine.question('Enter the ID of the task to delete:', (id: string) => {
+  readLine.question('Enter the ID of the task to delete: ', (id: string) => {
     readLine.close();
 
-    todoListInstance.deleteTask(Number(id));
+    const taskToDelete = todoListInstance.deleteTask(Number(id));
 
-    todoListInstance.loadTasksFromFile();
-    todoListInstance.showAllTasks();
-    console.log('Task deleted.');
+    if (taskToDelete) {
+      console.log(`Task ${taskToDelete} deleted.`);
+      todoListInstance.showAllTasks();
+
+    } else {
+      console.log(`Task with ID ${id} not found.`);
+
+    }
 
     displayMainMenu();
+
   });
 }
 
@@ -146,12 +149,13 @@ function promptAndShowTask() {
 }
 
 
-//////*** DISPLAY ALLL TASKS ***///////
-function displayAllTasks() {
+// //////*** DISPLAY ALLL TASKS ***///////
+function displayAllTasks() { 
+  displayMainMenu();
   const allTasks = todoListInstance.showAllTasks();
 
   console.log('All tasks: ', allTasks);
 
-  displayMainMenu();
 }
 
+displayMainMenu();

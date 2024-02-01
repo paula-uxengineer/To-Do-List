@@ -1,5 +1,5 @@
-import Task from "../core/template-task";
-import { Todolist } from "../core/template-todolist";
+import Task from "../core/interface-task";
+import { Todolist } from "../core/class-todolist";
 
 describe(Todolist, () => {
   let todoList: Todolist;
@@ -19,25 +19,24 @@ describe(Todolist, () => {
   });
 
   test("completedTask should mark a task as completed", () => {
-    const newTask: Task = todoList.addTask("study TypeScript");
-    todoList.completedTask(newTask.id);
-    expect(newTask.completed).toBe(true);
+    const completedTask = todoList.completedTask(1);
+    expect(completedTask).toBe(true);
+  });
+
+  
+  test("showTask should return the correct task", () => {
+    const retrievedTask = todoList.showTask(1);
+    expect(retrievedTask).toEqual(1);
+  });
+  
+  test("showAllTasks should return all tasks", () => {
+    const allTasks = todoList.showAllTasks();
+    expect(allTasks.length).toBeGreaterThan(1);
   });
 
   test("deleteTask should delete a task", () => {
-    const taskDeleted = todoList.deleteTask(4);
+    const taskDeleted = todoList.deleteTask(1);
     expect(taskDeleted).toBe("Deleted!");
-  });
-
-  test("showTask should return the correct task", () => {
-    const newTask: Task = todoList.addTask("study TypeScript");
-    const retrievedTask = todoList.showTask(newTask.id);
-    expect(retrievedTask).toEqual(newTask);
-  });
-
-  test("showAllTasks should return all tasks", () => {
-    const allTasks = todoList.showAllTasks();
-    expect(allTasks.length).toBeGreaterThan(6);
   });
 });
 

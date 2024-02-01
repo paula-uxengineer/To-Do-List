@@ -1,13 +1,13 @@
-import Task from "./template-task";
-import { TodolistDataStorage } from "./template-todolist-utilities";
+import Task from "./interface-task";
+import { TodolistDataStorage } from "./class-data_from_todolist";
 
 export class Todolist extends TodolistDataStorage{
 
-    listTask: any
+    listTask: any;
 
     constructor(){
         super();
-        this.listTask = this.loadTasksFromFile(__dirname + "/tasks.json");
+        this.listTask = this.loadTasksFromFile("./src/core/tasks.json");
     }
 
     addTask(taska: string) {
@@ -56,16 +56,18 @@ export class Todolist extends TodolistDataStorage{
     
     showTask(id:number) {
         const task = this.listTask.taskas.find((task: Task) => task.id === id);
-        console.log(task);
+        console.log(task); 
 
         return task;
     }
 
     showAllTasks() {
-        return this.listTask.taskas;
+       return this.listTask.taskas;
     }
 
 }
+
+
 
 // const app = new Todolist();
 // console.log(app);

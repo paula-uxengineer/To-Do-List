@@ -1,4 +1,6 @@
-{"taskas":
-    [{"id":1,"text":"study TypeScript","completed":true},{"id":2,"text":"Adopt a dog","completed":true},{"id":3,"text":"Meet Anders Hejlsberg","completed":false},{"id":4,"text":"ask him about the use of any","completed":false},{"id":5,"text":"adopt more dogs","completed":false},{"id":6,"text":"aprender typescript ","completed":false},{"id":7,"text":"aprender typescript ","completed":false},{"id":8,"text":"aprender typescript ","completed":false},{"id":9,"text":"aprender typescript ","completed":false},{"id":10,"text":"study TypeScript","completed":false},{"id":11,"text":"study TypeScript","completed":false},{"id":12,"text":"study TypeScript","completed":false},{"id":13,"text":"study TypeScript","completed":false},{"id":14,"text":"Adopt a dog","completed":false},{"id":15,"text":"Adopt more dogs","completed":false}],
-    "indice":16
+{
+  "taskas": [
+    { "id": 1, "text": "study TypeScript", "completed": true }
+  ],
+  "indice": 2 
 }
