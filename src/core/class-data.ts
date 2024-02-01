@@ -4,7 +4,7 @@ import fs from "fs";
 export class TodolistDataStorage {
   saveTasksToFile(tasks: Task[]) {
     
-    fs.writeFileSync("./src/core/tasks.json", JSON.stringify(tasks), 'utf-8');
+    fs.writeFileSync("./src/core/data.json", JSON.stringify(tasks), 'utf-8'); //save in data.json
 
     console.log('Tasks saved in the tasks.json file.');
   }
@@ -17,6 +17,6 @@ export class TodolistDataStorage {
   }
 }
 
-const resultado = new TodolistDataStorage().loadTasksFromFile("./src/core/tasks.json");
+const resultado = new TodolistDataStorage().loadTasksFromFile("./src/core/data.json");
 
 // console.log(resultado)

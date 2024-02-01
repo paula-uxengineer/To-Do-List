@@ -1,19 +1,16 @@
 import readline from 'readline'
 // import figlet from 'figlet'
-import { Todolist } from "../core/class-todolist";
+import { Todolist } from "../core/class-todolist_from_class-data";
 
 const figlet = require("figlet"); //import figlet
 
-////////////*** INIZIALICE CLI ***///////////
 const todoListInstance = new Todolist();
 
-
-//////*** TITLE ***///////
 function displayTitle(){ 
   return console.log(figlet.textSync("To-Do  List")) // .textsync() method from figlet to turn the text into ASCII Art
 };
 
-//////*** MENU ***///////
+
 function displayMainMenu() {
   displayTitle();
   console.log('--- Menu ---');
@@ -34,6 +31,7 @@ function displayMainMenu() {
     handleMenuChoice(choice);
   });
 }
+
 
 function handleMenuChoice(choice: string) {
   switch (choice) {
@@ -63,7 +61,7 @@ function handleMenuChoice(choice: string) {
   }
 }
 
-// //////*** ADD TASK ***///////
+
 function promptAndAddTask() {
   const readLine = readline.createInterface({
   input: process.stdin,
@@ -84,7 +82,6 @@ function promptAndAddTask() {
 }
 
 
-//////*** COMPLETED TASK ***///////
 function promptAndCompleteTask() {
   const readLine = readline.createInterface({
     input: process.stdin,
@@ -105,7 +102,6 @@ function promptAndCompleteTask() {
 }
 
 
-//////*** DELETE TASK ***///////
 function promptAndDeleteTask() {
   const readLine = readline.createInterface({
     input: process.stdin,
@@ -132,7 +128,6 @@ function promptAndDeleteTask() {
 }
 
 
-//////*** DISPLAY A TASK ***///////
 function promptAndShowTask() {
   const readLine = readline.createInterface({
     input: process.stdin,
@@ -149,7 +144,6 @@ function promptAndShowTask() {
 }
 
 
-// //////*** DISPLAY ALLL TASKS ***///////
 function displayAllTasks() { 
   displayMainMenu();
   const allTasks = todoListInstance.showAllTasks();

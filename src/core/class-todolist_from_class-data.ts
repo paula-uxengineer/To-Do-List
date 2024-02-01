@@ -1,5 +1,5 @@
 import Task from "./interface-task";
-import { TodolistDataStorage } from "./class-data_from_todolist";
+import { TodolistDataStorage } from "./class-data";
 
 export class Todolist extends TodolistDataStorage{
 
@@ -17,7 +17,7 @@ export class Todolist extends TodolistDataStorage{
             completed: false,
         }
 
-        this.listTask.taskas.push(newTask);
+        this.listTask.tasks.push(newTask);
         
         this.listTask.indice += 1;
 
@@ -56,6 +56,7 @@ export class Todolist extends TodolistDataStorage{
     
     showTask(id:number) {
         const task = this.listTask.taskas.find((task: Task) => task.id === id);
+        
         console.log(task); 
 
         return task;
@@ -67,13 +68,5 @@ export class Todolist extends TodolistDataStorage{
 
 }
 
-
-
-// const app = new Todolist();
-// console.log(app);
-
-// console.log(app.addTask("aprender typescript "));
-
-// console.log(app.showAllTasks())
-
-// console.log(app.deleteTask(3))
+const exemple = new Todolist().addTask("check VS");
+console.log(exemple);

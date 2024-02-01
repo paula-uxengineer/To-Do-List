@@ -1,6 +1,5 @@
 //////*** APP ***///////
-import {Todolist} from "./class-todolist" //contains template-task inside
-
+import {Todolist} from "./class-todolist_from_class-data" //contains template-task inside
 
 const app = new Todolist(); 
 

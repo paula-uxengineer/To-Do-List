@@ -1,5 +1,5 @@
 import Task from "../core/interface-task";
-import { Todolist } from "../core/class-todolist";
+import { Todolist } from "../core/class-todolist_from_class-data";
 
 describe(Todolist, () => {
   let todoList: Todolist;
