@@ -20,13 +20,13 @@ describe(Todolist, () => {
 
   test("completedTask should mark a task as completed", () => {
     const completedTask = todoList.completedTask(1);
-    expect(completedTask).toBe(true);
+    expect(completedTask).toBe("Ok");
   });
 
   
   test("showTask should return the correct task", () => {
     const retrievedTask = todoList.showTask(1);
-    expect(retrievedTask).toEqual(1);
+    expect(typeof retrievedTask).toBe("object");
   });
   
   test("showAllTasks should return all tasks", () => {

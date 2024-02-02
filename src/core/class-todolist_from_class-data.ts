@@ -7,17 +7,17 @@ export class Todolist extends TodolistDataStorage{
 
     constructor(){
         super();
-        this.listTask = this.loadTasksFromFile("./src/core/tasks.json");
+        this.listTask = this.loadTasksFromFile("./src/core/data.json");
     }
 
-    addTask(taska: string) {
+    addTask(taska: string): Task {
         const newTask: Task = {
             id: this.listTask.indice,
             text: taska,
             completed: false,
         }
 
-        this.listTask.tasks.push(newTask);
+        this.listTask.taskas.push(newTask);
         
         this.listTask.indice += 1;
 
@@ -28,33 +28,37 @@ export class Todolist extends TodolistDataStorage{
         return newTask;
     }
 
-    completedTask(id: number) {
-        const task = this.listTask.taskas.find((task: Task) => task.id == id)
+    completedTask(id: number) : string {
+        const task = this.listTask.taskas.findIndex((task: Task) => task.id == id)
 
-        if (task) {
-            task.completed = true;
+        if (task != -1) {
+            this.listTask.taskas[task].completed = true;
             console.log("Task is completed");
+            this.saveTasksToFile(this.listTask);
+            return "Ok"
 
         } else {
             console.log("Not completed taks found");
+            return "False"
         }
     }
 
-    deleteTask(id: number) {
+    deleteTask(id: number) : string {
         const index = this.listTask.taskas.findIndex((task: Task) => task.id === id);
 
-        if (index !== -1) {
+        if (index != -1) {
             this.listTask.taskas.splice(index, 1);
+            this.saveTasksToFile(this.listTask)
             console.log("Task is deleted");
+            return "Deleted!"
             
         } else {
             console.log("Not task found");
+            return "No deleted!"
         }
-        
-        return "Deleted!"
     }
     
-    showTask(id:number) {
+    showTask(id:number): Task {
         const task = this.listTask.taskas.find((task: Task) => task.id === id);
         
         console.log(task); 
@@ -62,11 +66,11 @@ export class Todolist extends TodolistDataStorage{
         return task;
     }
 
-    showAllTasks() {
+    showAllTasks() : Task[] {
        return this.listTask.taskas;
     }
 
 }
 
-const exemple = new Todolist().addTask("check VS");
-console.log(exemple);
+// const exemple = new Todolist().addTask("check VS");
+// console.log(exemple);
