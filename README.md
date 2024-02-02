@@ -1,11 +1,11 @@
-# <span style="color: blue;">TO-DO CLI APP</span> 
+# TO-DO CLI APP
 > A Command Line Interface (CLI) TO-DO application built with TypeScript, following Test Driven Development (TDD).
 
-## :small_blue_diamond:Description
+## :speaker: Description
 
 This TO-DO CLI application allows users to manage tasks effectively. Users can create tasks, view tasks by status (pending, in progress, completed), update tasks, and delete tasks. The application is designed with hexagonal architecture and uses Typescript for development.
 
-## :small_blue_diamond:Features
+## 🕹 Features
 
 - Add tasks.
 - Mark tasks as completed.
@@ -13,13 +13,13 @@ This TO-DO CLI application allows users to manage tasks effectively. Users can c
 - Show a task
 - Display all tasks.
 
-## :small_blue_diamond:Prerequisites
+## :computer: Prerequisites
 
 - Node.js (version >= 14)
 - npm (version >= 6)
 - Typescript
 
-## :small_blue_diamond:Installation
+## :floppy_disk: Installation
 
 1. To get started, you first need to clone the repository:
 
@@ -33,7 +33,7 @@ git clone [https://github.com/paula-uxengineer/to-do-list.git]
 npm install
 ```
 
-## :small_blue_diamond:How To Start
+## :checkered_flag: How To Start
 
 To start the app in development mode, run the following script:
 
@@ -41,7 +41,7 @@ To start the app in development mode, run the following script:
 npm run dev
 ```
 
-## :small_blue_diamond:Scripts
+## :space_invader: Scripts
 This project comes with several predefined scripts in the package.json file:
 
 ```test```: Runs tests using Jest.
@@ -56,11 +56,11 @@ npm run jest
 npm run jest
 ```
 
-## :small_blue_diamond:Dependencies
+## :wrench: Dependencies
 
 - "figlet": "^1.7.0"  
 
-## :small_blue_diamond:Dev Dependencies
+## :hammer: Dev Dependencies
 
 - "@types/jest": "^29.5.6",
 - "@types/node": "^20.11.10",
@@ -75,7 +75,7 @@ npm run jest
 - "ts-node": "^10.9.2",
 - "typescript": "^5.3.3"
 
-## :small_blue_diamond:Folder structure
+## :file_folder: Folder structure
 
 In this folder structure, the code is organized according to the principles of Hexagonal Architecture. 
 
@@ -100,7 +100,7 @@ src/
    └── app.test.ts
 
 ```
-## :small_blue_diamond:Contributing
+## :unlock: Contributing
 
 Contributions are welcome! To contribute to this project:
 
@@ -110,5 +110,5 @@ Contributions are welcome! To contribute to this project:
 Submit a pull request targeting the develop branch.
 For bug reports and feature requests, please open an issue on the GitHub repository.
 
-## License
+## :mortar_board:License
 This project is licensed under the MIT License. See the LICENSE file for more information.
