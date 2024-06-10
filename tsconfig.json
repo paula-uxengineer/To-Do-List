@@ -1,16 +1,14 @@
 {
-  "compilerOptions": 
-  {
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",                                /* Specify what module code is generated. */
-    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
-    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
-    "outDir": "./dist",                                  /* Specify an output folder for all emitted files. */
-    "removeComments": true,                              /* Disable emitting comments. */
-    "noEmit": true,                                      /* Disable emitting files from a compilation. */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. *                      /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-    "strict": true,                                      /* Enable all strict type-checking options. */                   /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  "compilerOptions": {
+    "target": "ES6", // Objetivo de compilación
+    "module": "commonjs", // Módulo usado en Node.js
+    "outDir": "./dist", // Directorio de salida de archivos compilados
+    "rootDir": "./src", // Directorio raíz de los archivos de entrada
+    "strict": true, // Estricto en tipos
+    "esModuleInterop": true, // Interoperabilidad con módulos ES6
+    "skipLibCheck": true, // Saltar la verificación de tipos en archivos de declaración
+    "forceConsistentCasingInFileNames": true, // Fuerza a usar nombres de archivo consistentes
+  },
+  "include": ["src/**/*.ts", "__tests__/**/*.ts"], // Incluir archivos fuente y pruebas
+  "exclude": ["node_modules", "dist"], // Excluir carpetas innecesarias
 }

@@ -1,1 +1,15 @@
-{"taskas":[{"id":1,"text":"study TypeScript","completed":true},{"id":2,"text":"study TypeScript","completed":false}],"indice":3}
+{
+  "tasks": [
+    {
+      "id": 2,
+      "text": "study TypeScript",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "text": "study TypeScript",
+      "completed": false
+    }
+  ],
+  "indice": 4
+}

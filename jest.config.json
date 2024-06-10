@@ -1,13 +1,9 @@
 {
-    "transform": {
-      "^.+\\.tsx?$": [
-        "ts-jest",
-      {
-        "tsconfig": "./tsconfig.json",
-        "module": "ES6"
-      }
-    ]
+  "roots": ["<rootDir>/src", "<rootDir>/src/_Tests"],
+  "testMatch": ["**/_Tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
   },
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "testPathIgnorePatterns": ["/node_modules/", "/dist/"]
 }
-  
